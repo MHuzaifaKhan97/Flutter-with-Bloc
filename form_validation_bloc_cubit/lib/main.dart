@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_validation_bloc_cubit/screens/home_screen.dart';
+import 'package:form_validation_bloc_cubit/screens/welcome/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }

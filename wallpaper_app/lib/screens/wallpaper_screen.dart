@@ -32,6 +32,7 @@ class _WallpaperScreenState extends State<WallpaperScreen> {
       backgroundColor: creamWhite,
       body: Column(
         children: [
+          const SizedBox(height: 12),
           const Text('Wallpaper App',
               style: TextStyle(fontSize: 40, fontFamily: handlee)),
           Neumorphic(

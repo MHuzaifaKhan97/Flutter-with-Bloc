@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallpaper_app/cubit/wallpaper_cubit_cubit.dart';
 import 'package:wallpaper_app/extra/constants.dart';
-import 'package:wallpaper_app/screens/wallpaper_screen.dart';
+import 'package:wallpaper_app/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: theme,
-        home: WallpaperScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-// key
-const key = 'PvrQMFAN5OrRNZLIA6Y6ZnQwVvSs8ZIXFTJtnfVWUjoGNBy97tGjbosb';
+// key (add from pexels.com)
+const key = 'YOUR API KEY';
 
 // assets
 const String handlee = 'Handlee-Regular';

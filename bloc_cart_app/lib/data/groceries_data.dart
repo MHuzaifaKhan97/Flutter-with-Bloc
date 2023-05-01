@@ -6,7 +6,7 @@ class GroceryData {
       'description': 'Fresh bananas from Ecuador',
       'price': 0.49,
       'imageUrl':
-          'https://cdn.shopify.com/s/files/1/0258/4307/3103/products/asset_2_800x.jpg?v=1571839043',
+          'https://png.pngtree.com/png-clipart/20220716/ourmid/pngtree-banana-yellow-fruit-banana-skewers-png-image_5944324.png',
     },
     {
       'id': '2',
@@ -14,14 +14,15 @@ class GroceryData {
       'description': 'Organic, locally grown apples',
       'price': 1.99,
       'imageUrl':
-          'https://www.jiomart.com/images/product/original/590000452/sharad-seedless-grapes-1-kg-product-images-o590000452-p590116963-0-202203171004.jpg',
+          'https://www.freepnglogos.com/uploads/grapes-png/grapes-dimidwa-12.png',
     },
     {
       'id': '3',
       'name': 'Bread',
       'description': 'Brown Bread, Tasty',
       'price': 2.49,
-      'imageUrl': 'https://thumbs.dreamstime.com/b/bread-cut-14027607.jpg',
+      'imageUrl':
+          'https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png',
     },
     {
       'id': '4',
@@ -29,7 +30,7 @@ class GroceryData {
       'description': 'Farm-fresh brown eggs',
       'price': 3.99,
       'imageUrl':
-          'https://cdn.britannica.com/94/151894-050-F72A5317/Brown-eggs.jpg',
+          'https://assets.stickpng.com/images/580b57fbd9996e24bc43c104.png',
     },
   ];
 }

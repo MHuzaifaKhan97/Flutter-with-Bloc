@@ -10,10 +10,10 @@ class ProductTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(24),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          border: Border.all(color: const Color.fromARGB(255, 102, 98, 98)),
+          color: Colors.teal.withOpacity(0.7),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -28,10 +28,16 @@ class ProductTileWidget extends StatelessWidget {
             ),
             Text(
               productDataModel.name,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             const SizedBox(height: 4),
-            Text(productDataModel.description),
+            Text(
+              productDataModel.description,
+              style: const TextStyle(color: Colors.white),
+            ),
             const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +45,9 @@ class ProductTileWidget extends StatelessWidget {
                 Text(
                   '\$ ${productDataModel.price}',
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
                 Row(
                   children: [
@@ -48,13 +56,15 @@ class ProductTileWidget extends StatelessWidget {
                           homeBloc.add(HomeProductWishListButtonClickEvent(
                               clickedProduct: productDataModel));
                         },
-                        icon: const Icon(Icons.favorite_outline)),
+                        icon: const Icon(Icons.favorite_outline,
+                            color: Colors.white)),
                     IconButton(
                         onPressed: () {
                           homeBloc.add(HomeProductCartButtonClickEvent(
                               clickedProduct: productDataModel));
                         },
-                        icon: const Icon(Icons.shopping_bag_outlined))
+                        icon: const Icon(Icons.shopping_bag_outlined,
+                            color: Colors.white))
                   ],
                 )
               ],

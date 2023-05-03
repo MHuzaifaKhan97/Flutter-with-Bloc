@@ -55,6 +55,11 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   child: const Text("Update Data From Database")),
+              MaterialButton(
+                  onPressed: () {
+                    cubit.deleteDataFromDatabase(id: 2);
+                  },
+                  child: const Text("Delete Data From Database")),
             ],
           )),
         );

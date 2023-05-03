@@ -69,6 +69,7 @@ class TodoCubit extends Cubit<TodoState> {
         (id) {
           print("$id");
           emit(TodoInsertingIntoDatabaseState());
+          gettingDataFromDatabase();
         },
       ).catchError(
         (err) {

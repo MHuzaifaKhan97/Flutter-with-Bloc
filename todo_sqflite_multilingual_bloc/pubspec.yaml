@@ -38,6 +38,7 @@ dependencies:
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
   sqflite: ^2.2.8
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

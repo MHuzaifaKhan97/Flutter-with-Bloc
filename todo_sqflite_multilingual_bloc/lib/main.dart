@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Todo Multilingual with SQFlite',
         debugShowCheckedModeBanner: false,
-        theme: darkTheme,
+        theme: lightTheme,
         darkTheme: darkTheme,
         home: const HomeScreen(),
       ),

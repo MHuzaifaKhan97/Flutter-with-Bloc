@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_sqflite_multilingual_bloc/controller/cubit/todo_cubit.dart';
+import 'package:todo_sqflite_multilingual_bloc/shared/styles/themes.dart';
 import 'package:todo_sqflite_multilingual_bloc/views/home_screen.dart';
 
 void main() {
@@ -21,9 +22,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Todo Multilingual with SQFlite',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.teal,
-        ),
+        theme: darkTheme,
+        darkTheme: darkTheme,
         home: const HomeScreen(),
       ),
     );

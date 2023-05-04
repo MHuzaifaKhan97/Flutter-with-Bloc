@@ -7,3 +7,4 @@
 ### - Firebase Auth using Cubit
 ### - API Integration using Bloc + Cubit
 ### - Flutter Wallpaper Application using Bloc + Cubit
+### - Task App using Flutter, SQFlite & Bloc

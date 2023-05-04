@@ -11,6 +11,12 @@ class TodoCubit extends Cubit<TodoState> {
   TodoCubit() : super(TodoInitialState());
 
   static TodoCubit get(context) => BlocProvider.of(context);
+  TextEditingController titleController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController descController = TextEditingController();
+  var addTaskformKey = GlobalKey<FormState>();
+  var updateTaskformKey = GlobalKey<FormState>();
   List tasks = [];
   // SQFLite
   // Create our Database
@@ -159,5 +165,12 @@ class TodoCubit extends Cubit<TodoState> {
       context.locale = const Locale('en', 'US');
     }
     emit(TodoChangeLangToEnglishState());
+  }
+
+  navigateToUpdate({required int id}) {
+    titleController.text = tasks[id]['title'];
+    timeController.text = tasks[id]['time'];
+    dateController.text = tasks[id]['date'];
+    descController.text = tasks[id]['description'];
   }
 }

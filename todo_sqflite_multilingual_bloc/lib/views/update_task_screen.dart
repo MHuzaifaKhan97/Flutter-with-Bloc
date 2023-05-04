@@ -1,18 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:todo_sqflite_multilingual_bloc/controller/cubit/todo_cubit.dart';
 import 'package:todo_sqflite_multilingual_bloc/shared/styles/widget/textformfield.dart';
 
 class UpdateTaskScreen extends StatelessWidget {
   UpdateTaskScreen({this.id});
   int? id;
-  TextEditingController titleController = TextEditingController();
-  TextEditingController timeController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController descController = TextEditingController();
-  var _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<TodoCubit, TodoState>(
@@ -37,13 +32,13 @@ class UpdateTaskScreen extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key: cubit.updateTaskformKey,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
                     CustomTextFormField(
-                        controller: titleController,
+                        controller: cubit.titleController,
                         textInputType: TextInputType.text,
                         onFieldSubmitted: (val) {},
                         validator: (val) {
@@ -56,7 +51,7 @@ class UpdateTaskScreen extends StatelessWidget {
                         prefixIcon: Icons.title),
                     const SizedBox(height: 12),
                     CustomTextFormField(
-                        controller: timeController,
+                        controller: cubit.timeController,
                         textInputType: TextInputType.datetime,
                         onFieldSubmitted: (val) {},
                         onTap: () {
@@ -64,9 +59,9 @@ class UpdateTaskScreen extends StatelessWidget {
                                   context: context,
                                   initialTime: TimeOfDay.now())
                               .then((value) {
-                            timeController.text = value!.format(context);
+                            cubit.timeController.text = value!.format(context);
                           }).catchError((err) {
-                            timeController.clear();
+                            cubit.timeController.clear();
                           });
                         },
                         validator: (val) {
@@ -79,7 +74,7 @@ class UpdateTaskScreen extends StatelessWidget {
                         prefixIcon: Icons.watch_later_outlined),
                     const SizedBox(height: 12),
                     CustomTextFormField(
-                        controller: dateController,
+                        controller: cubit.dateController,
                         textInputType: TextInputType.datetime,
                         onFieldSubmitted: (val) {},
                         validator: (val) {
@@ -95,7 +90,7 @@ class UpdateTaskScreen extends StatelessWidget {
                                   lastDate: DateTime.parse("2050-12-30"))
                               .then(
                             (value) {
-                              dateController.text =
+                              cubit.dateController.text =
                                   DateFormat.yMMMd().format(value!);
                             },
                           ).catchError((err) {});
@@ -105,8 +100,8 @@ class UpdateTaskScreen extends StatelessWidget {
                         prefixIcon: Icons.calendar_month),
                     const SizedBox(height: 12),
                     CustomTextFormField(
-                        maxLines: 5,
-                        controller: descController,
+                        maxLines: 2,
+                        controller: cubit.descController,
                         textInputType: TextInputType.text,
                         onFieldSubmitted: (val) {},
                         validator: (val) {
@@ -125,13 +120,14 @@ class UpdateTaskScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
+                          if (cubit.updateTaskformKey.currentState!
+                              .validate()) {
                             cubit.updateDataFromDatabase(
                                 id: id!,
-                                title: titleController.text,
-                                date: dateController.text,
-                                time: timeController.text,
-                                description: descController.text);
+                                title: cubit.titleController.text,
+                                date: cubit.dateController.text,
+                                time: cubit.timeController.text,
+                                description: cubit.descController.text);
                           }
                         },
                         child: Text(

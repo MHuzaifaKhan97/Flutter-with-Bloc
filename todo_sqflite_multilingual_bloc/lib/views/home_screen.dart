@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_sqflite_multilingual_bloc/controller/cubit/todo_cubit.dart';
+import 'package:todo_sqflite_multilingual_bloc/shared/styles/widget/drawer_widget.dart';
+import 'package:todo_sqflite_multilingual_bloc/shared/styles/widget/empty_widget.dart';
 import 'package:todo_sqflite_multilingual_bloc/views/add_task_screen.dart';
 import 'package:todo_sqflite_multilingual_bloc/views/update_task_screen.dart';
 
@@ -26,46 +28,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Colors.teal,
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "./assets/images/todo_icon.png",
-                        scale: 26,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'task_App'.tr(),
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                ),
-                ListTile(
-                  title: const Text('English'),
-                  onTap: () {
-                    cubit.changeArabicToEnglish(context);
-                  },
-                ),
-                ListTile(
-                  title: const Text('عربي'),
-                  onTap: () {
-                    cubit.changeEnglishToArabic(context);
-                  },
-                ),
-              ],
-            ),
-          ),
+          drawer: const Drawer(child: DrawerWidget()),
           body: ConditionalBuilder(
             condition: state is! TodoLoadingDataFromDatabaseState,
             fallback: (context) => const Center(
@@ -107,6 +70,8 @@ class HomeScreen extends StatelessWidget {
                                         const SizedBox(width: 8),
                                         InkWell(
                                             onTap: () {
+                                              cubit.navigateToUpdate(
+                                                  id: cubit.tasks[index]['id']);
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (_) =>
@@ -151,25 +116,7 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                     )
-                  : Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.warning_amber,
-                            size: 32,
-                          ),
-                          SizedBox(height: 6),
-                          Text(
-                            '',
-                            style: TextStyle(
-                                color: Colors.teal,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    );
+                  : const EmptyWidget();
             },
           ),
           floatingActionButton: FloatingActionButton(

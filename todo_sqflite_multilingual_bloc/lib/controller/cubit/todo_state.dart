@@ -10,3 +10,5 @@ class TodoCreateDatabaseState extends TodoState {}
 class TodoInsertingIntoDatabaseState extends TodoState {}
 
 class TodoGettingDataFromDatabaseState extends TodoState {}
+
+class TodoDeletingDataFromDatabaseState extends TodoState {}

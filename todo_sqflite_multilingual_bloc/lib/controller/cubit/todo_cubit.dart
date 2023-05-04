@@ -38,6 +38,7 @@ class TodoCubit extends Cubit<TodoState> {
       },
       onOpen: (databse) {
         print("Database file is open");
+        gettingDataFromDatabase(databse);
       },
     ).then(
       (value) {
@@ -69,7 +70,7 @@ class TodoCubit extends Cubit<TodoState> {
         (id) {
           print("$id");
           emit(TodoInsertingIntoDatabaseState());
-          gettingDataFromDatabase();
+          gettingDataFromDatabase(database);
         },
       ).catchError(
         (err) {
@@ -80,7 +81,7 @@ class TodoCubit extends Cubit<TodoState> {
   }
 
   // Getting data from database
-  void gettingDataFromDatabase() {
+  void gettingDataFromDatabase(database) {
     tasks = [];
     database!.rawQuery('SELECT * FROM tasks').then(
       (value) {
@@ -119,7 +120,7 @@ class TodoCubit extends Cubit<TodoState> {
         .then(
       (value) {
         print(value);
-        gettingDataFromDatabase();
+        gettingDataFromDatabase(database);
       },
     ).catchError(
       (err) {
@@ -133,7 +134,7 @@ class TodoCubit extends Cubit<TodoState> {
     database!.rawDelete('DELETE from tasks WHERE id = ? ', [id]).then(
       (value) {
         print("$value Deleted Successfully");
-        gettingDataFromDatabase();
+        gettingDataFromDatabase(database);
       },
     ).catchError(
       (err) {

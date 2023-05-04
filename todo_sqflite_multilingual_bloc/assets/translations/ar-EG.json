@@ -1,0 +1,20 @@
+{
+    "task_App":"تطبيق المهام",
+    "add_Task":"إضافة مهمة",
+    "title_validation":"الرجاء إضافة المسمى الوظيفي الخاص بك",
+    "time_validation":"الرجاء إضافة وقتك",
+    "date_validation":"الرجاء إضافة التاريخ الخاص بك",
+    "desc_validation":"الرجاء إضافة الوصف الخاص بك",
+    "title_hint":"أضف لقبك",
+    "time_hint":"أضف وقتك",
+    "date_hint":"أضف تاريخك",
+    "desc_hint":"أضف وصفك",
+    "no_task_added":"أضف وصفك",
+    "title":"عنوان",
+    "date":"تاريخ",
+    "time":"وقت",
+    "description":"وصف",
+    "update_task":"تحديث المهمة"
+
+
+}

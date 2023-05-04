@@ -5,7 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:todo_sqflite_multilingual_bloc/controller/cubit/todo_cubit.dart';
 import 'package:todo_sqflite_multilingual_bloc/shared/styles/widget/textformfield.dart';
 
-class AddTaskScreen extends StatelessWidget {
+class UpdateTaskScreen extends StatelessWidget {
+  UpdateTaskScreen({this.id});
+  int? id;
   TextEditingController titleController = TextEditingController();
   TextEditingController timeController = TextEditingController();
   TextEditingController dateController = TextEditingController();
@@ -15,7 +17,7 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<TodoCubit, TodoState>(
       listener: (context, state) {
-        if (state is TodoInsertingIntoDatabaseState) {
+        if (state is TodoUpdateDataFromDatabaseState) {
           Navigator.of(context).pop();
         }
       },
@@ -25,7 +27,7 @@ class AddTaskScreen extends StatelessWidget {
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.teal),
             title: Text(
-              'add_Task'.tr(),
+              'update_task'.tr(),
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
@@ -124,7 +126,8 @@ class AddTaskScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            cubit.insertIntoDatabase(
+                            cubit.updateDataFromDatabase(
+                                id: id!,
                                 title: titleController.text,
                                 date: dateController.text,
                                 time: timeController.text,
@@ -132,7 +135,7 @@ class AddTaskScreen extends StatelessWidget {
                           }
                         },
                         child: Text(
-                          "add_Task".tr(),
+                          "update_task".tr(),
                           style: const TextStyle(color: Colors.white),
                         )),
                   ],

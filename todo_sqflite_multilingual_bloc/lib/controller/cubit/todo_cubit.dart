@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:sqflite/sqflite.dart';
@@ -120,6 +122,7 @@ class TodoCubit extends Cubit<TodoState> {
         .then(
       (value) {
         print(value);
+        emit(TodoUpdateDataFromDatabaseState());
         gettingDataFromDatabase(database);
       },
     ).catchError(
@@ -141,5 +144,20 @@ class TodoCubit extends Cubit<TodoState> {
         print(err);
       },
     );
+  }
+
+  // Change langauage
+  changeEnglishToArabic(BuildContext context) {
+    if (EasyLocalization.of(context)!.locale == const Locale('en', 'US')) {
+      context.locale = const Locale('ar', 'EG');
+    }
+    emit(TodoChangeLangToArabicState());
+  }
+
+  changeArabicToEnglish(BuildContext context) {
+    if (EasyLocalization.of(context)!.locale == const Locale('ar', 'EG')) {
+      context.locale = const Locale('en', 'US');
+    }
+    emit(TodoChangeLangToEnglishState());
   }
 }

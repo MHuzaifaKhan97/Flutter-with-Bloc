@@ -1,0 +1,18 @@
+{
+    "task_App":"Task App",
+    "add_Task":"Add Task",
+    "title_validation":"Please add your title",
+    "time_validation":"Please add your time",
+    "date_validation":"Please add your date",
+    "desc_validation":"Please add your description",
+    "title_hint":"Add your title",
+    "time_hint":"Add your time",
+    "date_hint":"Add your date",
+    "desc_hint":"Add your description",
+    "no_task_added":"No Task added yet",
+    "title":"Title",
+    "date":"Date",
+    "time":"Time",
+    "description":"Description",
+    "update_task":"Update Task"
+}

@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:todo_sqflite_multilingual_bloc/views/update_task_screen.dart';
 
 part 'todo_state.dart';
 
@@ -78,6 +80,7 @@ class TodoCubit extends Cubit<TodoState> {
         (id) {
           print("$id");
           emit(TodoInsertingIntoDatabaseState());
+          clearControllers();
           gettingDataFromDatabase(database);
         },
       ).catchError(
@@ -129,6 +132,7 @@ class TodoCubit extends Cubit<TodoState> {
       (value) {
         print(value);
         emit(TodoUpdateDataFromDatabaseState());
+        clearControllers();
         gettingDataFromDatabase(database);
       },
     ).catchError(
@@ -167,10 +171,21 @@ class TodoCubit extends Cubit<TodoState> {
     emit(TodoChangeLangToEnglishState());
   }
 
-  navigateToUpdate({required int id}) {
-    titleController.text = tasks[id]['title'];
-    timeController.text = tasks[id]['time'];
-    dateController.text = tasks[id]['date'];
-    descController.text = tasks[id]['description'];
+  navigateToUpdate({required int index, required BuildContext context}) {
+    titleController.text = tasks[index]['title'];
+    timeController.text = tasks[index]['time'];
+    dateController.text = tasks[index]['date'];
+    descController.text = tasks[index]['description'];
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => UpdateTaskScreen(
+              id: tasks[index]['id'],
+            )));
+  }
+
+  clearControllers() {
+    titleController.clear();
+    timeController.clear();
+    dateController.clear();
+    descController.clear();
   }
 }

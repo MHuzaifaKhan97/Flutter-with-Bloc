@@ -6,7 +6,6 @@ import 'package:todo_sqflite_multilingual_bloc/controller/cubit/todo_cubit.dart'
 import 'package:todo_sqflite_multilingual_bloc/shared/styles/widget/drawer_widget.dart';
 import 'package:todo_sqflite_multilingual_bloc/shared/styles/widget/empty_widget.dart';
 import 'package:todo_sqflite_multilingual_bloc/views/add_task_screen.dart';
-import 'package:todo_sqflite_multilingual_bloc/views/update_task_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -63,22 +62,15 @@ class HomeScreen extends StatelessWidget {
                                         InkWell(
                                             onTap: () {
                                               cubit.deleteDataFromDatabase(
-                                                  id: cubit.tasks[index]
-                                                      ['id']!);
+                                                  id: cubit.tasks[index]['id']);
                                             },
                                             child: const Icon(Icons.delete)),
                                         const SizedBox(width: 8),
                                         InkWell(
                                             onTap: () {
                                               cubit.navigateToUpdate(
-                                                  id: cubit.tasks[index]['id']);
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          UpdateTaskScreen(
-                                                            id: cubit.tasks[
-                                                                index]['id'],
-                                                          )));
+                                                  index: index,
+                                                  context: context);
                                             },
                                             child: const Icon(Icons.edit)),
                                       ],
